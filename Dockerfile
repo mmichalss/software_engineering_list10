@@ -1,9 +1,9 @@
 FROM python:3.12
-WORKDIR /dockertest
 
-COPY requirements.txt .
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/mmichalss/software_engineering_list10.git
+WORKDIR /software_engineering_list10
 RUN pip install -r requirements.txt
-COPY djangoproject /dockertest/djangoproject
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
